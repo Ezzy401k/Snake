@@ -1,4 +1,4 @@
-
+day 20 and 21 of 100 day python coding challenge
 # Snake Game
 
 This Python program is a simple Snake game where the player controls a snake to eat food and grow longer without colliding with itself or the boundaries of the screen.
