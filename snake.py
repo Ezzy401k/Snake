@@ -1,25 +1,26 @@
 import turtle
 
-STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]  # Starting positions for the snake segments
-MOVE_DISTANCE = 20  # Distance to move in each step
-UP = 90  # Angle for moving up
-DOWN = 270  # Angle for moving down
-LEFT = 180  # Angle for moving left
-RIGHT = 0  # Angle for moving right
-
+# Define constants for starting positions and movement
+STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
+MOVE_DISTANCE = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 class Snake:
     def __init__(self):
         self.segments = []  # List to store the snake segments
-        self.create_snake()  # Create the snake
+        self.create_snake()  # Create the initial snake
         self.head = self.segments[0]  # Reference to the head segment of the snake
 
     def create_snake(self):
-        # Create the snake segments
+        # Create the initial segments of the snake
         for position in STARTING_POSITIONS:
             self.add_segment(position)
 
     def add_segment(self, position):
+        # Add a new segment to the snake
         new_segment = turtle.Turtle()
         new_segment.color("white")
         new_segment.shape("square")
@@ -28,6 +29,7 @@ class Snake:
         self.segments.append(new_segment)
 
     def enlarge(self):
+        # Add a new segment to the end of the snake
         self.add_segment(self.segments[-1].position())
 
     def move(self):
