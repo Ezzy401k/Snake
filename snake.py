@@ -7,6 +7,7 @@ DOWN = 270  # Angle for moving down
 LEFT = 180  # Angle for moving left
 RIGHT = 0  # Angle for moving right
 
+
 class Snake:
     def __init__(self):
         self.segments = []  # List to store the snake segments
@@ -16,12 +17,18 @@ class Snake:
     def create_snake(self):
         # Create the snake segments
         for position in STARTING_POSITIONS:
-            new_segment = turtle.Turtle()
-            new_segment.color("white")
-            new_segment.shape("square")
-            new_segment.penup()
-            new_segment.goto(position)
-            self.segments.append(new_segment)
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        new_segment = turtle.Turtle()
+        new_segment.color("white")
+        new_segment.shape("square")
+        new_segment.penup()
+        new_segment.goto(position)
+        self.segments.append(new_segment)
+
+    def enlarge(self):
+        self.add_segment(self.segments[-1].position())
 
     def move(self):
         # Move the snake forward
