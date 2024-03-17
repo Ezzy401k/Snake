@@ -8,7 +8,6 @@ DOWN = 270
 LEFT = 180
 RIGHT = 0
 
-
 class Snake:
     def __init__(self):
         self.segments = []  # List to store the snake segments
@@ -34,14 +33,17 @@ class Snake:
         self.add_segment(self.segments[-1].position())
 
     def reset(self):
+        # Move all segments out of the screen and clear the segments list
         for seg in self.segments:
-            seg.goto(1000,1000)
+            seg.goto(1000, 1000)
         self.segments.clear()
+        # Recreate the snake with the initial segments
         self.create_snake()
+        # Set the head of the snake to the first segment
         self.head = self.segments[0]
 
     def move(self):
-        # Move the snake forward
+        # Move the snake forward by updating the positions of each segment
         for seg_num in range(len(self.segments) - 1, 0, -1):
             new_x = self.segments[seg_num - 1].xcor()
             new_y = self.segments[seg_num - 1].ycor()
@@ -49,21 +51,21 @@ class Snake:
         self.head.forward(MOVE_DISTANCE)
 
     def up(self):
-        # Change the snake's direction to up
+        # Change the snake's direction to up, if it's not already moving down
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
 
     def down(self):
-        # Change the snake's direction to down
+        # Change the snake's direction to down, if it's not already moving up
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
 
     def right(self):
-        # Change the snake's direction to right
+        # Change the snake's direction to right, if it's not already moving left
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
 
     def left(self):
-        # Change the snake's direction to left
+        # Change the snake's direction to left, if it's not already moving right
         if self.head.heading() != RIGHT:
             self.head.setheading(LEFT)
